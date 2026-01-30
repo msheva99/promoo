@@ -109,7 +109,7 @@ export default function Promo1001Bites() {
               <span className="text-orange-500 text-base">📍</span>
               <div>
                 <p className="text-[10px] font-black text-gray-800 leading-none">Jl. Dr. Ramelan, Kudus</p>
-                <p className="text-[8px] text-gray-400 font-medium">Kec. Kota Kudus, Kab. Kudus</p>
+                <p className="text-[8px] text-gray-400 font-medium">Kec. Kota Kudus, Kab. Kudus (CFD - Belakang BCA)</p>
               </div>
             </a>
           </div>

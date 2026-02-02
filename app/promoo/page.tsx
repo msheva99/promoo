@@ -13,7 +13,6 @@ export default function Promo1001Bites() {
         const res = await fetch('/api/promo');
         const data = await res.json();
         
-        // Mengambil sisa kuota dari database Upstash
         setRemaining(data.remaining ?? 0);
 
         if (data.success) {
@@ -32,7 +31,6 @@ export default function Promo1001Bites() {
 
   const BackgroundWrapper = ({ children }: { children: React.ReactNode }) => (
     <div className="relative min-h-[100dvh] w-full flex items-center justify-center p-4 font-sans text-[#1a1a1a] overflow-hidden">
-      {/* Background Utama - Menggunakan object-cover agar memenuhi seluruh layar (Full) */}
       <div className="fixed inset-0 -z-10 w-full h-full">
         <Image 
           src="/images/tampilan_diskon.png" 
@@ -41,11 +39,9 @@ export default function Promo1001Bites() {
           priority 
           className="object-cover object-center" 
         />
-        {/* Overlay halus agar teks kartu tetap kontras dan terbaca */}
-        <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
       </div>
       
-      {/* Container Kartu dengan skala responsif agar muat di berbagai ukuran HP */}
       <div className="relative z-10 w-full flex justify-center scale-[0.85] xs:scale-90 sm:scale-100 transition-transform">
         {children}
       </div>
@@ -65,7 +61,6 @@ export default function Promo1001Bites() {
       <BackgroundWrapper>
         <div className="w-full max-w-[310px] bg-[#FDF9F3] rounded-[2.5rem] shadow-2xl text-center p-6 border border-white/50 animate-in fade-in zoom-in duration-500">
           
-          {/* Logo Brand - logo_hitam.png */}
           <div className="relative w-12 h-12 mx-auto mb-4">
             <Image 
               src="/images/logo_hitam.png" 
@@ -84,18 +79,20 @@ export default function Promo1001Bites() {
             </h2>
           </div>
 
+          {/* SEKSI HADIAH: Teks Diperbesar & Warna Selaras Background */}
           <div className="my-3">
-            <h1 className="text-lg font-black text-[#D98E27] leading-tight px-2">
-              GRATIS 1 POTONG<br/>
-              <span className="text-gray-900 text-base">ARABIAN FRIED CHICKEN</span>
+            <h1 className="text-2xl font-black text-[#1a2e44] leading-tight px-2 uppercase italic">
+              GRATIS 1 POTONG
             </h1>
+            <p className="text-[10px] font-black text-gray-900 tracking-widest uppercase">
+              ARABIAN FRIED CHICKEN
+            </p>
           </div>
 
           <p className="text-[9px] font-medium text-gray-500 italic mb-4">
             *untuk pembelian 2 paket Aladdin*
           </p>
 
-          {/* Bagian Lokasi Outlet */}
           <div className="mb-4 text-center">
             <p className="text-[7px] font-bold text-gray-400 uppercase italic mb-1.5 tracking-wide">
               Klik tag lokasi untuk menemukan outlet
@@ -114,21 +111,21 @@ export default function Promo1001Bites() {
             </a>
           </div>
 
-          {/* Indikator Sisa Kuota (Data dari Upstash) */}
-          <div className="bg-[#FEF2E4] rounded-[1.5rem] py-3 mb-4 border border-orange-100 shadow-inner">
+          {/* SISA KUOTA: Background & Warna Sejurusan dengan Tema Biru Tua */}
+          <div className="bg-[#f0f4f8] rounded-[1.5rem] py-3 mb-4 border border-[#1a2e44]/10 shadow-inner">
             <div className="flex justify-center items-baseline gap-1.5">
-              <span className="text-4xl font-black text-[#D98E27] tracking-tighter tabular-nums">
+              <span className="text-4xl font-black text-[#1a2e44] tracking-tighter tabular-nums">
                 {String(remaining).padStart(2, '0')}
               </span>
-              <span className="text-xs font-black text-[#D98E27]">ORANG LAGI</span>
+              <span className="text-xs font-black text-[#1a2e44]">ORANG LAGI</span>
             </div>
-            <p className="text-[8px] font-bold text-orange-800/60 uppercase tracking-[0.1em] mt-0.5">
+            <p className="text-[8px] font-bold text-[#1a2e44]/60 uppercase tracking-[0.1em] mt-0.5">
               Sisa Promo
             </p>
           </div>
 
-          {/* Tombol Aksi / Instruksi Kasir */}
-          <div className="bg-gradient-to-r from-[#F15A24] to-[#FF8C00] rounded-[1.2rem] p-4 text-white shadow-lg active:scale-95 transition-transform">
+          {/* TOMBOL KASIR: Gradasi Biru Tua Gelap Mengikuti Background Halaman */}
+          <div className="bg-gradient-to-r from-[#1a2e44] to-[#0f1a27] rounded-[1.2rem] p-4 text-white shadow-lg active:scale-95 transition-transform">
             <p className="font-bold text-[11px] leading-tight">
               Tunjukkan halaman ini ke kasir dan nikmati promonya sekarang!
             </p>
@@ -151,12 +148,10 @@ export default function Promo1001Bites() {
     );
   }
 
-  // Tampilan ketika Kuota Habis (Sold Out)
   return (
     <BackgroundWrapper>
       <div className="bg-white p-8 rounded-[2.5rem] shadow-xl max-w-[280px] w-full text-center border border-gray-100 animate-in fade-in">
         <div className="relative w-10 h-10 mx-auto mb-3 grayscale opacity-40">
-           {/* Menggunakan logo.png asli */}
            <Image src="/images/logo.png" alt="Logo" fill className="object-contain" />
         </div>
         <h1 className="text-base font-black text-gray-900 uppercase">Yah, Habis!</h1>
